@@ -27,7 +27,12 @@ end
 
 -- draw a boid
 local function drawBoid(b)
-    love.graphics.setColor(unpack(app.DEFAULT_COLOR));
+    -- check if color is nil
+    if(b:getColor()) then
+        love.graphics.setColor(unpack(b:getColor()));
+    else
+        love.graphics.setColor(unpack(app.DEFAULT_COLOR));
+    end
     love.graphics.circle("line", b:getX(), b:getY(), b:getSize(), app.CIRCLE_SEGMENTS);
 end
 
