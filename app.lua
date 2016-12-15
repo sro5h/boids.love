@@ -6,7 +6,6 @@ local app_mt = {__index = app};
 -- constants
 app.EPSILON = 0.0000001;
 app.CIRCLE_SEGMENTS = 30;
-app.DEFAULT_COLOR = {96, 140, 195};
 app.PLAYER_SIZE = 10;
 app.BOID_SIZE = 10;
 
@@ -33,12 +32,7 @@ end
 
 -- draw a boid
 local function drawBoid(b)
-    -- check if color is nil
-    if(b:getColor()) then
-        love.graphics.setColor(unpack(b:getColor()));
-    else
-        love.graphics.setColor(unpack(app.DEFAULT_COLOR));
-    end
+    love.graphics.setColor(unpack(b:getColor()));
     love.graphics.circle("line", b:getX(), b:getY(), b:getSize(), app.CIRCLE_SEGMENTS);
 end
 

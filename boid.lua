@@ -1,13 +1,16 @@
 local boid = {};
 local boid_mt = {__index = boid};
 
+-- constants
+boid.DEFAULT_COLOR = {96, 140, 195};
+
 -- creates a new boid
 function boid.new(x, y, size, color)
     local _boid = setmetatable({
         _x = x,
         _y = y,
         _size = size or 20,
-        _color = color
+        _color = color or boid.DEFAULT_COLOR
     }, boid_mt);
 
     return _boid;
