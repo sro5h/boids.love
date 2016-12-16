@@ -1,5 +1,5 @@
 local boid = {};
-local boid_mt = {__index = boid};
+boid.__index = boid;
 
 -- constants
 boid.DEFAULT_COLOR = {96, 140, 195};
@@ -11,7 +11,7 @@ function boid.new(x, y, size, color)
         _y = y,
         _size = size or 20,
         _color = color or boid.DEFAULT_COLOR
-    }, boid_mt);
+    }, boid);
 
     return _boid;
 end

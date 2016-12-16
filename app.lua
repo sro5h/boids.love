@@ -1,7 +1,7 @@
 local boid = require("boid");
 
 local app = {};
-local app_mt = {__index = app};
+app.__index = app;
 
 -- constants
 app.EPSILON = 0.0000001;
@@ -17,7 +17,7 @@ function app.new(width, height)
 
         _player = {},
         _boids = {}
-    }, app_mt);
+    }, app);
 
     -- create player
     _app._player = boid.new(_app._width / 2, _app._height / 2, app.PLAYER_SIZE, {177, 94, 124});
