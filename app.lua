@@ -33,13 +33,13 @@ end
 -- draw a boid
 local function drawBoid(b)
     love.graphics.setColor(unpack(b:getColor()));
-    love.graphics.circle("line", b:getX(), b:getY(), b:getSize(), app.CIRCLE_SEGMENTS);
+    love.graphics.circle("line", b:getPos().x, b:getPos().y, b:getSize(), app.CIRCLE_SEGMENTS);
 end
 
 -- draw a player
 local function drawPlayer(p)
     love.graphics.setColor(unpack(p:getColor()));
-    love.graphics.circle("line", p:getX(), p:getY(), p:getSize(), app.CIRCLE_SEGMENTS);
+    love.graphics.circle("line", p:getPos().x, p:getPos().y, p:getSize(), app.CIRCLE_SEGMENTS);
 end
 
 -- get the width
@@ -73,8 +73,7 @@ end
 
 -- handleEvents
 function app:handleInput()
-    self._player:setX(love.mouse.getX());
-    self._player:setY(love.mouse.getY());
+    self._player:setPos(love.mouse.getX(), love.mouse.getY());
 
     -- key presses
     if(love.keyboard.isDown("a")) then

@@ -1,3 +1,5 @@
+local vector2 = require("vector2");
+
 local boid = {};
 boid.__index = boid;
 
@@ -7,8 +9,7 @@ boid.DEFAULT_COLOR = {96, 140, 195};
 -- creates a new boid
 function boid.new(x, y, size, color)
     local _boid = setmetatable({
-        _x = x,
-        _y = y,
+        _position = vector2.new(x, y),
         _size = size or 20,
         _color = color or boid.DEFAULT_COLOR
     }, boid);
@@ -16,24 +17,19 @@ function boid.new(x, y, size, color)
     return _boid;
 end
 
--- get the x value
-function boid:getX()
-    return self._x;
+-- get the position as vector2
+function boid:getPos()
+    return self._position;
 end
 
--- set the x value
-function boid:setX(x)
-    self._x = x;
-end
-
--- get the y value
-function boid:getY()
-    return self._y;
-end
-
--- set the y value
-function boid:setY(y)
-    self._y = y;
+-- set the position by vector2 or value
+function boid:setPos(vecOrX, y)
+    if(type(vecOrX) == "number") then
+        self._position.x = vecOrX;
+        self._position.y = y;
+    else
+        self._position = vecOrX;
+    end
 end
 
 -- get the size
